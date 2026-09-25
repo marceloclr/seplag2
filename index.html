@@ -158,15 +158,31 @@ body.bloqueado .topo,body.bloqueado .palco{visibility:hidden}
   background:radial-gradient(ellipse 60% 50% at 50% 45%,rgba(37,99,235,.28),transparent 70%),linear-gradient(180deg,#020611,#061634 55%,#020611);
   font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;transition:opacity .5s ease}
 .login.saindo{opacity:0;pointer-events:none}
-.term{position:relative;width:min(560px,100%);border-radius:12px;background:rgba(10,20,44,.62);border:1px solid rgba(125,170,255,.28);
-  box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 30px 80px -20px rgba(0,0,0,.9),0 0 60px -10px rgba(59,130,246,.35);
+.term{position:relative;width:min(560px,100%);border-radius:12px;background:rgba(10,20,44,.62);border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 30px 80px -20px rgba(0,0,0,.9);
   backdrop-filter:blur(10px) saturate(1.2);-webkit-backdrop-filter:blur(10px) saturate(1.2);color:#cbd5e1}
 .term{transition:border-color .2s}
 /* mesma vibração da tela de login do sistema de comunicação: erro treme com borda vermelha; acerto pulsa em verde */
 /* a entrada só roda junto com a espera: ao digitar (sai "aguardando") ou depois do erro a caixa não reaparece do zero */
-.term.aguardando{animation:surgir .5s ease both,aguardar 2.8s ease-in-out .5s infinite}
-@keyframes aguardar{0%,100%{box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 30px 80px -20px rgba(0,0,0,.9),0 0 40px -12px rgba(59,130,246,.3);border-color:rgba(125,170,255,.28)}
-  50%{box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 30px 80px -20px rgba(0,0,0,.9),0 0 70px -6px rgba(96,165,250,.6);border-color:rgba(147,197,253,.6)}}
+.term.aguardando{animation:surgir .5s ease both}
+/* pulso de luz permanente, numa camada própria para não disputar com o tremor e o pulso verde:
+   um pulso de 2,5 s por cor, na ordem dos botões da barra (vermelho, amarelo, verde) e o azul original */
+.term::after{content:'';position:absolute;inset:-1px;border-radius:inherit;border:1px solid transparent;pointer-events:none;
+  animation:aguardar 10s ease-in-out infinite;transition:opacity .2s}
+.term.erro::after,.term.sucesso::after{opacity:0}
+@keyframes aguardar{
+  0%{border-color:rgba(248,113,113,.28);box-shadow:0 0 40px -12px rgba(248,113,113,.3)}
+  12.5%{border-color:rgba(252,165,165,.65);box-shadow:0 0 70px -6px rgba(248,113,113,.6)}
+  24.9%{border-color:rgba(248,113,113,.28);box-shadow:0 0 40px -12px rgba(248,113,113,.3)}
+  25%{border-color:rgba(250,204,21,.28);box-shadow:0 0 40px -12px rgba(250,204,21,.3)}
+  37.5%{border-color:rgba(253,224,71,.65);box-shadow:0 0 70px -6px rgba(250,204,21,.55)}
+  49.9%{border-color:rgba(250,204,21,.28);box-shadow:0 0 40px -12px rgba(250,204,21,.3)}
+  50%{border-color:rgba(74,222,128,.28);box-shadow:0 0 40px -12px rgba(74,222,128,.3)}
+  62.5%{border-color:rgba(134,239,172,.65);box-shadow:0 0 70px -6px rgba(74,222,128,.55)}
+  74.9%{border-color:rgba(74,222,128,.28);box-shadow:0 0 40px -12px rgba(74,222,128,.3)}
+  75%{border-color:rgba(125,170,255,.28);box-shadow:0 0 40px -12px rgba(59,130,246,.3)}
+  87.5%{border-color:rgba(147,197,253,.6);box-shadow:0 0 70px -6px rgba(96,165,250,.6)}
+  100%{border-color:rgba(125,170,255,.28);box-shadow:0 0 40px -12px rgba(59,130,246,.3)}}
 .term.erro{border-color:#f87171;animation:auth-shake .4s ease-in-out}
 .term.sucesso{border-color:#4ade80;animation:auth-success-pulse .5s ease-out}
 @keyframes auth-shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}

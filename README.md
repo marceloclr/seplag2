@@ -9,4 +9,6 @@ Versão de teste do [Portal SEPLAG](https://github.com/marceloclr/seplag), com u
 - A tela de senha não tem mais o corredor de data center desenhado em canvas. Fica só o fundo azul-noite em degradê (CSS).
 - A barra da janela de terminal (antes `root@sysboot: ~/login`) mostra **Hub de Sistemas da COFIP / CAEXF**. O texto digitado no boot passa a ser: *Coordenadoria Especial de Gestão Financeira e de Projetos - COFIP*, *Célula de Acompanhamento da Execução Financeira - CAEXF* e *Soluções de Gestão Financeira e Projetos*.
 
+- O box pulsa sem parar, alternando vermelho, amarelo, verde e o azul original (2,5 s por cor, ciclo de 10 s). O pulso continua durante a digitação e só some durante o tremor de erro e o pulso verde de acerto.
+
 Todo o resto é igual ao `index.html` oficial: efeitos, animações, paleta, fontes, senha, abas e sistemas cadastrados. Para detalhes de funcionamento, veja o README do [seplag](https://github.com/marceloclr/seplag#readme).
