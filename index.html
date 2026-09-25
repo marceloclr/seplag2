@@ -176,7 +176,7 @@ body.bloqueado .topo,body.bloqueado .palco{visibility:hidden}
 .term-barra .vm{background:#ff5f57}.term-barra .am{background:#febc2e}.term-barra .vd{background:#28c840}
 .term-barra span{margin-left:10px}
 .term-corpo{position:relative;padding:16px 18px 18px;font-size:13.5px;line-height:1.75}
-.boot{min-height:7em;color:#4ade80;white-space:pre-wrap}
+.boot{min-height:10.5em;color:#4ade80;white-space:pre-wrap}
 .boot .u{color:#7dd3fc}
 .boot .t{color:#94a3b8}
 .campo-t{display:flex;align-items:center;gap:10px;position:relative}
@@ -534,7 +534,7 @@ const SEM_ANIMACAO=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function digitarBoot(){
   const agora=new Date();
   const quando='acessando em '+agora.toLocaleDateString('pt-BR')+' às '+agora.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-  const linhas=[['u','Hub de Sistemas da COFIP / CAEXF\n'],['','Portal de Gestão Financeira e Projetos\n'],['','Sistemas de Gestão Pública\n'],['t',quando+' · autenticação requerida']];
+  const linhas=[['u','Coordenadoria Especial de Gestão Financeira e de Projetos - COFIP\n'],['','Célula de Acompanhamento da Execução Financeira - CAEXF\n'],['','Soluções de Gestão Financeira e Projetos\n'],['t',quando+' · autenticação requerida']];
   const alvo=$('#boot'); alvo.innerHTML='';
   if(SEM_ANIMACAO){ alvo.innerHTML=linhas.map(function(l){ return l[0]?'<span class="'+l[0]+'">'+esc(l[1])+'</span>':esc(l[1]); }).join(''); return; }
   let i=0, j=0, span=null;
